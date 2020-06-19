@@ -1,15 +1,42 @@
 <!doctype html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <form th:action="@{/users}" th:method="get">
-        <input type="text" th:name="username">
-        <button type="submit">Procurar</button>
-    </form>
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+            <img th:src="@{git-logo.png}" width="30" height="30" class="align-top" alt="" loading="lazy">
+            GitFinder
+        </a>
+    </nav>
+    <div class="container">
+        <div class="d-flex justify-content-center mb-4">
+            <form th:action="@{/users}" th:method="get" class="form-inline mt-5">
+                <div class="input-group">
+                    <input th:name="username" type="text" class="form-control" placeholder="Search for user...">
+                    <div class="input-group-prepend">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="row">
+            <div th:each="user : ${users}" class="col-sm-12 col-md-9 mt-2">
+                <img th:src="${user.avatarImage}" class="rounded float-left mr-2" width="30" height="30">
+                <a th:text="${user.username}" th:href="${user.profileUrl}" class="mr-1"></a>
+                <a th:text="${user.userInfo.name}" th:href="${user.profileUrl}" class="ml-1 name-url"></a>
+                <span th:text="${'Type: ' + user.userType}" class="badge badge-light"></span>
+                <p th:text="${'Bio: ' + user.userInfo.bio}" th:if="${user.userInfo.bio != null}"></p>
+                <hr class="mt-4 mb-3" />
+            </div>
+        </div>
 </body>
 </html>

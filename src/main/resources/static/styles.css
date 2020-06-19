@@ -1,0 +1,10 @@
+.name-url{
+    color: #000000d8;
+    font-weight: 600;
+}
+
+.name-url:hover{
+    color: #000000d8;
+    font-weight: 600;
+    text-decoration: none;
+}

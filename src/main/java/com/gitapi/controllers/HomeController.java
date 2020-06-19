@@ -1,5 +1,8 @@
 package com.gitapi.controllers;
 
+import java.util.List;
+
+import com.gitapi.models.User;
 import com.gitapi.services.GitHubRestService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,20 +17,19 @@ public class HomeController {
 
     @Autowired
     GitHubRestService gitApiService;
-    
+
     @Value("${api.gitgub.baseUrl}")
     public String baseUrl;
 
-
     @GetMapping("/")
-    public String getHome(){
+    public String getHome() {
         return "index";
     }
 
     @GetMapping("/users")
-    public String getUsers (@RequestParam String username, RedirectAttributes attributes){
-        attributes.addFlashAttribute(gitApiService.getUsers(username));
-        return "redirect: ";
+    public String getUsers(@RequestParam String username, RedirectAttributes attributes) {
+        attributes.addFlashAttribute("users", gitApiService.getUsers(username));
+        return "redirect:/";
     }
-    
+
 }
