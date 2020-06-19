@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gitapi.models.User;
 import com.gitapi.models.UserInfo;
@@ -27,6 +26,11 @@ public class GitHubRestService {
     public List<User> getUsers(String username) {
         int userIndex = 0;
         List<User> usersList = new ArrayList<>();
+        
+        if(username.trim().isEmpty()){
+           return usersList;
+        }
+
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(baseUrl.concat("/search/users")).queryParam("q",
                 username);
 

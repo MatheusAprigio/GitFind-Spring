@@ -28,6 +28,8 @@ public class HomeController {
 
     @GetMapping("/users")
     public String getUsers(@RequestParam String username, RedirectAttributes attributes) {
+
+        attributes.addFlashAttribute("totalUsers", gitApiService.getUsers(username).size());
         attributes.addFlashAttribute("users", gitApiService.getUsers(username));
         return "redirect:/";
     }
