@@ -26,17 +26,17 @@ public class UserService {
     @Autowired
     ObjectMapper mapper;
 
-    
-    public List<User> getUsers(String username) {
+    public List<User> getUsers(String username, String sortBy) {
         int userIndex = 0;
         List<User> usersList = new ArrayList<>();
-        
-        if(username.trim().isEmpty()){
-           return usersList;
+
+        if (username.trim().isEmpty()) {
+            return usersList;
         }
 
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(baseUrl.concat("/search/users")).queryParam("q",
-                username);
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(baseUrl.concat("/search/users"))
+                .queryParam("q", username)
+                .queryParam("order", sortBy);
 
         HashMap<String, List<User>> response = restTemplate.getForObject(builder.toUriString(),
                 new HashMap<>().getClass());
@@ -54,7 +54,7 @@ public class UserService {
 
     public UserInfo setUserInfo(List<User> usersList, int userIndex) {
         try {
-            
+
             String userInfoUrl = usersList.get(userIndex).getUserInfoUrl();
             String userInfoJson = restTemplate.getForObject(userInfoUrl, userInfoUrl.getClass());
             UserInfo userInfo = mapper.readValue(userInfoJson, UserInfo.class);

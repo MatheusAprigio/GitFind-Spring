@@ -4,10 +4,10 @@
     <form th:action="@{/users}" th:method="get">
         <div class="form-row">
             <div class="form-group">
-                <label>Sort by: </label>
-                <select class="form-control" id="exampleFormControlSelect2">
-                    <option>ASC</option>
-                    <option>DESC</option>
+                <label for="sortBy-user">Sort by: </label>
+                <select th:name="sortBy"> class="form-control" id="sortBy-user">
+                    <option th:value="asc">ASC</option>
+                    <option th:value="desc">DESC</option>
                 </select>
             </div>
         </div>

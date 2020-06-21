@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class IndexController {
@@ -24,11 +25,11 @@ public class IndexController {
     }
 
     @GetMapping("/users")
-    public String getUsers(@RequestParam String username, Model model) {
+    public String getUsers(@RequestParam String username, @RequestParam String sortBy, RedirectAttributes model) {
 
-        model.addAttribute("totalUsers", gitApiService.getUsers(username).size());
-        model.addAttribute("users", gitApiService.getUsers(username));
-        return "index";
+        model.addFlashAttribute("totalUsers", gitApiService.getUsers(username, sortBy).size());
+        model.addFlashAttribute("users", gitApiService.getUsers(username, sortBy));
+        return "redirect: ";
     }
 
 }
