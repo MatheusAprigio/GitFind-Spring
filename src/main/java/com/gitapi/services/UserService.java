@@ -6,23 +6,27 @@ import java.util.List;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.gitapi.models.User;
-import com.gitapi.models.UserInfo;
+import com.gitapi.models.user.*;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @Service
-public class GitHubRestService {
+public class UserService {
 
     @Value("${api.gitgub.baseUrl}")
     private String baseUrl;
 
-    RestTemplate restTemplate = new RestTemplate();
-    ObjectMapper mapper = new ObjectMapper();
+    @Autowired
+    RestTemplate restTemplate;
 
+    @Autowired
+    ObjectMapper mapper;
+
+    
     public List<User> getUsers(String username) {
         int userIndex = 0;
         List<User> usersList = new ArrayList<>();
