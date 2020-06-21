@@ -26,7 +26,7 @@ public class UserService {
     @Autowired
     ObjectMapper mapper;
 
-    public List<User> getUsers(String username, String sortBy) {
+    public List<User> getUsers(String username, String sortBy, String orderBy) {
         int userIndex = 0;
         List<User> usersList = new ArrayList<>();
 
@@ -36,7 +36,8 @@ public class UserService {
 
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(baseUrl.concat("/search/users"))
                 .queryParam("q", username)
-                .queryParam("order", sortBy);
+                .queryParam("order", orderBy)
+                .queryParam("sort", sortBy);
 
         HashMap<String, List<User>> response = restTemplate.getForObject(builder.toUriString(),
                 new HashMap<>().getClass());

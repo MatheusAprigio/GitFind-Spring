@@ -1,5 +1,6 @@
 package com.gitapi.controllers;
 
+import com.gitapi.services.RepositoryService;
 import com.gitapi.services.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,22 +15,33 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class IndexController {
 
     @Autowired
-    UserService gitApiService;
+    UserService userService;
+
+    @Autowired
+    RepositoryService repositoryService;
 
     @Value("${api.gitgub.baseUrl}")
     public String baseUrl;
 
     @GetMapping("/")
     public String getHome() {
-        return "index";
+        return "homepage";
     }
 
     @GetMapping("/users")
-    public String getUsers(@RequestParam String username, @RequestParam String sortBy, RedirectAttributes model) {
+    public String getUsers(@RequestParam String username, @RequestParam String sortBy,  @RequestParam String orderBy, Model model) {
 
-        model.addFlashAttribute("totalUsers", gitApiService.getUsers(username, sortBy).size());
-        model.addFlashAttribute("users", gitApiService.getUsers(username, sortBy));
-        return "redirect: ";
+        model.addAttribute("totalUsers", userService.getUsers(username, sortBy, orderBy).size());
+        model.addAttribute("users", userService.getUsers(username, sortBy, orderBy));
+        return "resultList";
+    }
+
+    @GetMapping("/repositories")
+    public String getRespositories(@RequestParam String repository, @RequestParam String sortBy,  @RequestParam String orderBy, Model model) {
+
+        model.addAttribute("totalRepositories", repositoryService.getRepositories(repository, sortBy, orderBy).size());
+        model.addAttribute("repositories", repositoryService.getRepositories(repository, sortBy, orderBy));
+        return "resultList";
     }
 
 }

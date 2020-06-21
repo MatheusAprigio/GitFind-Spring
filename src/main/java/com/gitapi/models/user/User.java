@@ -39,16 +39,6 @@ public class User {
         this.userInfo = userInfo;
     }
 
-    public User() {
-    }
-
-    public User(String username, String userType, String avatarImage, String profileUrl) {
-        this.username = username;
-        this.userType = userType;
-        this.avatarImage = avatarImage;
-        this.profileUrl = profileUrl;
-    }
-
     public String getUsername() {
         return this.username;
     }
@@ -63,5 +53,15 @@ public class User {
 
     public String getProfileUrl() {
         return this.profileUrl;
+    }
+
+    public User() {
+    }
+
+    public User(String username, String userType, String avatarImage, String profileUrl) {
+        this.username = username;
+        this.userType = userType;
+        this.avatarImage = avatarImage;
+        this.profileUrl = profileUrl;
     }
 }

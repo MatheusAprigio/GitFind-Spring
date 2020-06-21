@@ -18,16 +18,19 @@
         </a>
     </nav>
     <div class="container">
-        <div class="row">
-            <div th:replace="fragments/userForm"></div>
+        <div class="mt-5">
+            <a href="javascript:history.back()"><b>< Return</b></a>
         </div>
-
-        <div th:if="${totalUsers != 0 && totalUsers != null}" class="row">
+        <hr>
+        <div class="mb-2" th:if="${totalUsers != 0 && totalUsers != null}">
             <p th:text="${totalUsers} + ' user(s) found'"></p>
         </div>
-
+        <div class="mb-2" th:if="${totalRepositories != 0 && totalRepositories != null}">
+            <p th:text="${totalRepositories} + ' repositories found'"></p>
+        </div>
         <div class="row">
             <div th:insert="fragments/listUsers"></div>
+            <div th:insert="fragments/listRepositories"></div>
         </div>
     </div>
 </body>

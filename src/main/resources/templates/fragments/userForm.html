@@ -1,11 +1,21 @@
 <div class="col-sm-12 col-md-5 mt-5">
-    <h2>Find a user</h2>
+    <h3 class="text-center">Find a user</h3>
     <hr>
     <form th:action="@{/users}" th:method="get">
         <div class="form-row">
             <div class="form-group">
                 <label for="sortBy-user">Sort by: </label>
-                <select th:name="sortBy"> class="form-control" id="sortBy-user">
+                <select th:name="sortBy" class="form-control" id="sortBy-user">
+                    <option value="">None</option>
+                    <option th:value="followers">Followers</option>
+                    <option th:value="repositories">Number of repositories</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="orderBy-user">Order by: </label>
+                <select th:name="orderBy" class="form-control" id="orderBy-user">
                     <option th:value="asc">ASC</option>
                     <option th:value="desc">DESC</option>
                 </select>
@@ -13,13 +23,13 @@
         </div>
         <div class="form-row">
             <div class="form-group">
+                <label for="username">Username: </label>
                 <div class="input-group">
-                    <input th:name="username" type="text" class="form-control" placeholder="Search for a user...">
-                    <div class="input-group-prepend">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                    </div>
+                    <input th:name="username" type="text" id="username" class="form-control" placeholder="Search for a user...">
                 </div>
             </div>
         </div>
+        <button class="btn btn-primary" type="submit">Search</button>
     </form>
 </div>
+

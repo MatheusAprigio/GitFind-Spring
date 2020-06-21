@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitFinder</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="icon" th:href="@{images/git-logo.png}">
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+            <img th:src="@{images/git-logo.png}" width="30" height="30" class="align-top" alt="" loading="lazy">
+            GitFinder
+        </a>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div th:replace="fragments/userForm"></div>
+            <div class="col-sm-12 col-md-2 text-center mt-5">
+                <h2><b>OR</b></h2>
+            </div>
+            <div th:replace="fragments/repositoryForm"></div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<div class="col-sm-12 col-md-5 mt-5">
+    <h3 class="text-center">Find a repository</h3>
+    <hr>
+    <form th:action="@{/repositories}" th:method="get">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="sortBy-repository">Sort by: </label>
+                <select th:name="sortBy" class="form-control" id="sortBy-repository">
+                    <option value="">None</option>
+                    <option th:value="stars">Stars</option>
+                    <option th:value="forks">Forks</option>
+                    <option th:value="help-wanted-issues">Help wanted issues</option>
+                    <option th:value="updated">Last updated</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="orderBy-repository">Order by: </label>
+                <select th:name="orderBy" class="form-control" id="orderBy-repository">
+                    <option th:value="asc">ASC</option>
+                    <option th:value="desc">DESC</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="repository">Repository: </label>
+                <div class="input-group">
+                    
+                    <input th:name="repository" type="text" id="repository" class="form-control" placeholder="Search for a repository...">
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+</div>
+
