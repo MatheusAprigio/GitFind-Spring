@@ -11,24 +11,12 @@
     <link rel="icon" th:href="@{images/git-logo.png}">
 </head>
 <body>
-    <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">
-            <img th:src="@{images/git-logo.png}" width="30" height="30" class="align-top" alt="" loading="lazy">
-            GitFinder
-        </a>
-    </nav>
-    <div class="container">
-        <div class="row">
-            <div th:replace="fragments/userForm"></div>
-        </div>
-
-        <div th:if="${totalUsers != 0 && totalUsers != null}" class="row">
-            <p th:text="${totalUsers} + ' user(s) found'"></p>
-        </div>
-
-        <div class="row">
-            <div th:insert="fragments/listUsers"></div>
-        </div>
+    <div class="container text-center mt-5">
+        <h1 th:text="${status}"></h1>
+        <p th:text="${error}"></p>
+        <p th:text="${message}"></p>
+        <img th:src="@{images/octodex-error.png}" width="200" height="200">
+        <br>
+        <a class="waves-effect waves-light btn" href="javascript:history.back()">Return to homepage</a>
     </div>
 </body>
-</html>
