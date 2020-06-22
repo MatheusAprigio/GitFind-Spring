@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Raleway&family=Roboto&display=swap" rel="stylesheet">
     <link rel="icon" th:href="@{images/git-logo.png}">
 </head>
+
 <body>
     <nav class="navbar navbar-dark bg-dark">
         <a class="navbar-brand" href="#">
@@ -19,7 +21,8 @@
     </nav>
     <div class="container">
         <div class="mt-5">
-            <a href="javascript:history.back()"><b>< Return</b></a>
+            <a href="javascript:history.back()"><b>
+                    < Return</b></a>
         </div>
         <hr>
         <div class="mb-2" th:if="${totalUsers != 0 && totalUsers != null}">
@@ -34,4 +37,5 @@
         </div>
     </div>
 </body>
+
 </html>
